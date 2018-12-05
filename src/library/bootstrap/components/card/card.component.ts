@@ -5,5 +5,9 @@ import {Component, Input} from '@angular/core';
   templateUrl: './card.component.html'
 })
 export class CardComponent {
+
   @Input() titulo: string;
+
+  @Input() darkMode: boolean;
+
 }

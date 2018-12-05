@@ -1,21 +1,4 @@
 <!-- {{ Angular Expression }} -->
 <!-- Angular Statements (conteudo do *ngfor) -->
 
-<div class="container">
-
-  <div class="row">
-    <div class="col-sm-2" *ngFor="let foto of fotos">
-
-      <btsp-card [titulo]="foto.titulo | tresPontinhos: 7 ">
-
-        <btsp-img-fluid [img]="toImg(foto)"></btsp-img-fluid>
-        <button class="btn btn-danger btn-block mx-auto mt-2" (click)="delete(foto)">
-          Apagar
-        </button>
-      </btsp-card>
-
-    </div>
-  </div>
-
-</div>
-
+<router-outlet></router-outlet>
