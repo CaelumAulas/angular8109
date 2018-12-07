@@ -5,6 +5,10 @@
     <hr>
 
     <div class="row">
+      <div class="alert alert-success col-sm-12" *ngIf="msgSucesso">
+          {{ msgSucesso }}
+      </div>
+
       <form class="col-sm-6" (submit)="save()" [formGroup]="formulario" autocomplete="off">
         <div class="form-group">
           <label for="titulo">Titulo</label>

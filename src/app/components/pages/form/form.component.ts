@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 import { FotoAPI } from 'src/app/model/api/FotoAPI';
 
-import { Img } from 'src/library/bootstrap/components/img-fluid/img-fluid.component';
 import { ActivatedRoute } from '@angular/router';
 
 import { filter, flatMap } from 'rxjs/operators';
 import { FotosResourceService } from 'src/app/services/fotos-resource.service';
-import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -27,6 +26,7 @@ export class FormComponent implements OnInit {
     url: new FormControl(this.foto.url, [Validators.required]),
     descricao: new FormControl(this.foto.descricao),
   });
+  msgSucesso: string;
 
 
   constructor(private _fotoAPI: FotosResourceService, private _rotaAtual: ActivatedRoute, fb: FormBuilder) {
@@ -56,7 +56,10 @@ export class FormComponent implements OnInit {
   }
 
   save() {
-    this._fotoAPI.save(this.foto);
+    this._fotoAPI.save(this.foto)
+      .subscribe(() => {
+        this.msgSucesso = 'Enviada com sucesso';
+      });
   }
 
 }
