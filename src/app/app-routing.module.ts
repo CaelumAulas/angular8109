@@ -8,7 +8,11 @@ export const routes = RouterModule.forRoot([
     component: ListagemComponent
   },
   {
-    path: 'form',
+    path: 'cadastrar',
+    component: FormComponent
+  },
+  {
+    path: 'editar/:idFoto',
     component: FormComponent
   },
   {

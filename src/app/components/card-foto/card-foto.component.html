@@ -1,0 +1,11 @@
+
+<btsp-card [titulo]="foto.titulo | tresPontinhos: 7" [darkMode]="darkMode">
+
+    <btsp-img-fluid [img]="toImg(foto)"></btsp-img-fluid>
+    <button *ngIf="editable" class="btn btn-danger btn-block mx-auto mt-2" (click)="deleteConfirm()">
+      Apagar
+    </button>
+    <a *ngIf="editable" [routerLink]="['editar', foto._id]" class="btn btn-primary btn-block mx-auto mt-2">
+      Edição
+    </a>
+</btsp-card>

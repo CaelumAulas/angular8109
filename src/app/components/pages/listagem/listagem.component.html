@@ -4,7 +4,7 @@
 
       <div class="form-group col-12">
         <div class="input-group">
-          <a routerLink="/form" class="btn btn-primary">
+          <a routerLink="/cadastrar" class="btn btn-primary">
             Nova foto
           </a>
           <input type="text" class="form-control" [(ngModel)]="termoBusca">
@@ -13,18 +13,14 @@
 
       <div class="col-sm-2" *ngFor="let foto of fotos | filtroPorTitulo: termoBusca; trackBy: trackFotos; let posicao = index">
 
-        <btsp-card [titulo]="foto.titulo | tresPontinhos: 7" [darkMode]="posicao % 2">
 
-          <btsp-img-fluid [img]="toImg(foto)"></btsp-img-fluid>
-          <button class="btn btn-danger btn-block mx-auto mt-2" (click)="delete(foto)">
-            Apagar
-          </button>
-          <a routerLink="/form" class="btn btn-primary btn-block mx-auto mt-2">
-            Edição
-          </a>
-        </btsp-card>
+        <app-card-foto [foto]="foto" [editable]="true" [darkMode]="posicao % 2" (delete)="delete(foto)">
+
+        </app-card-foto>
 
       </div>
+
+
 
     </div>
 
