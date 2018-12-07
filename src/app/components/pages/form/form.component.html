@@ -8,22 +8,25 @@
       <form class="col-sm-6" (submit)="save()" [formGroup]="formulario" autocomplete="off">
         <div class="form-group">
           <label for="titulo">Titulo</label>
-          <input name="titulo" class="form-control" formControlName="inputTitulo">
+          <input name="titulo" class="form-control" formControlName="titulo">
 
-          <div class="alert alert-danger" *ngIf="formulario.controls.inputTitulo.invalid && formulario.controls.inputTitulo.errors.required" >
+          <div class="alert alert-danger mt-2" *ngIf="(formulario.controls.titulo.dirty || formulario.controls.titulo.touched) && formulario.controls.titulo.invalid && formulario.controls.titulo.errors.required" >
             Título vazio
           </div>
-          <div class="alert alert-danger" *ngIf="formulario.controls.inputTitulo.invalid && formulario.controls.inputTitulo.errors.minlength">
+          <div class="alert alert-danger mt-2" *ngIf="(formulario.controls.titulo.dirty || formulario.controls.titulo.touched) && formulario.controls.titulo.invalid && formulario.controls.titulo.errors.minlength">
               Título deve ter no mínimo 3 chars
           </div>
         </div>
         <div class="form-group">
           <label for="url">URL</label>
-          <input id="url" name="url" class="form-control">
+          <input id="url" name="url" class="form-control" formControlName="url">
+          <div class="alert alert-danger mt-2" *ngIf="(formulario.controls.url.dirty || formulario.controls.url.touched) && formulario.controls.url.invalid && formulario.controls.url.errors.required" >
+              URL é obrigatória
+          </div>
         </div>
         <div class="form-group">
           <label for="descricao">Descrição</label>
-          <textarea id="descricao" name="descricao" class="form-control">
+          <textarea id="descricao" name="descricao" class="form-control" formControlName="descricao">
 
           </textarea>
         </div>
@@ -35,7 +38,7 @@
         </button>
       </form>
 
-      <app-card-foto [foto]="foto"></app-card-foto>
+      <app-card-foto [foto]="foto" class="col-sm-6"></app-card-foto>
 
     </div>
 </section>

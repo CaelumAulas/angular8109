@@ -23,7 +23,9 @@ export class FormComponent implements OnInit {
   };
 
   formulario = new FormGroup({
-    inputTitulo: new FormControl(this.foto.titulo, [Validators.required, Validators.minLength(3)])
+    titulo: new FormControl(this.foto.titulo, [Validators.required, Validators.minLength(3)]),
+    url: new FormControl(this.foto.url, [Validators.required]),
+    descricao: new FormControl(this.foto.descricao),
   });
 
 
@@ -41,14 +43,12 @@ export class FormComponent implements OnInit {
       .subscribe((foto: FotoAPI) => {
         this.foto = foto;
 
-        this.formulario.patchValue({
-          inputTitulo: this.foto.titulo
-        });
+        this.formulario.patchValue(foto);
 
       });
 
       this.formulario.valueChanges
-        .subscribe(alteracoes => this.foto.titulo = alteracoes.inputTitulo);
+        .subscribe(alteracoes => this.foto = {...this.foto, ...alteracoes});
 
   }
 
